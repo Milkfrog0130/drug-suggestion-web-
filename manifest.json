@@ -1,0 +1,17 @@
+{
+  "short_name": "兒急用藥",
+  "name": "兒科急診常見用藥攻略",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/822/822118.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#F5F1ED",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#D4A373",
+  "description": "兒科急診劑量快速換算工具"
+}
