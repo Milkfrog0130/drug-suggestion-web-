@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兒急用藥計算助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #F5F1ED; color: #3D2B1F; } /* 延續米色調 */
+        .slider { -webkit-appearance: none; width: 100%; height: 15px; border-radius: 5px; background: #D4A373; outline: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 25px; height: 25px; border-radius: 50%; background: #795548; cursor: pointer; }
+    </style>
+</head>
+<body class="p-5">
+    <div class="max-w-md mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-2xl font-bold">兒急用藥助手</h1>
+            <p class="text-sm opacity-70">秀傳/市醫 護理師排班系統開發紀錄版</p>
+        </header>
+
+        <section class="bg-white p-6 rounded-3xl shadow-sm mb-6">
+            <label class="block text-lg font-bold mb-4">病患體重: <span id="weight-display" class="text-3xl text-orange-600">10</span> kg</label>
+            <input type="range" min="3" max="60" value="10" class="slider" id="weight-slider">
+        </section>
+
+        <div id="med-list" class="space-y-4">
+            </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('weight-slider');
+        const display = document.getElementById('weight-display');
+        const medList = document.getElementById('med-list');
+
+        // 模擬從 JSON 讀取的數據
+        const medData = [
+            { name: "Anti-phen (24mg/mL)", calc: (bw) => bw / 2, unit: "mL", note: ">38.5°C, Q6H PRN [cite: 3]" },
+            { name: "Macsafe (20mg/mL)", calc: (bw) => bw / 2, unit: "mL", note: ">38.5°C, Q6H PRN [cite: 4]" },
+            { name: "Cough mixture", calc: (bw) => bw / 4, unit: "mL", note: "QID, Max 10mL [cite: 7]" }
+        ];
+
+        function updateMedication(weight) {
+            display.innerText = weight;
+            medList.innerHTML = medData.map(med => `
+                <div class="bg-white p-5 rounded-2xl border-l-8 border-orange-400 shadow-sm">
+                    <h3 class="font-bold text-gray-500 text-sm">${med.name}</h3>
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-black text-brown-800">${med.calc(weight).toFixed(1)}</span>
+                        <span class="ml-2 text-xl font-bold">${med.unit}</span>
+                    </div>
+                    <p class="text-xs mt-2 text-gray-400">${med.note}</p>
+                </div>
+            `).join('');
+        }
+
+        slider.addEventListener('input', (e) => updateMedication(e.target.value));
+        updateMedication(10); // 初始化
+    </script>
+</body>
+</html>
