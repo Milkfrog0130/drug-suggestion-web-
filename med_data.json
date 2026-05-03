@@ -1,0 +1,36 @@
+[
+  {
+    "category": "退燒藥 Antipyretics",
+    "drugs": [
+      {
+        "name": "Anti-phen (Acetaminophen) 24mg/mL",
+        "formula": "(BW / 2)",
+        "unit": "mL",
+        "interval": "Q6H PRN",
+        "max": "20mL/dose",
+        "note": "適用於 > 38.5°C [cite: 3]"
+      },
+      {
+        "name": "Macsafe (Ibuprofen) 20mg/mL",
+        "formula": "(BW / 2)",
+        "unit": "mL",
+        "interval": "Q6H PRN",
+        "max": "20mL/dose",
+        "note": "適用於 > 38.5°C [cite: 4]"
+      }
+    ]
+  },
+  {
+    "category": "止咳化痰 Antitussive/Mucolytic",
+    "drugs": [
+      {
+        "name": "Cough mixture",
+        "formula": "(BW / 4)",
+        "unit": "mL",
+        "interval": "QID",
+        "max": "10mL/dose",
+        "note": "相當於 1 mL/kg/day [cite: 7]"
+      }
+    ]
+  }
+]
